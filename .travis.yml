@@ -1,0 +1,27 @@
+language: php
+
+php:
+  - 5.3
+
+env:
+  - DB=mysql
+
+before_script:
+  - pear channel-discover pear.phpunit.de
+  - pear channel-discover components.ez.no
+  - pear channel-discover pear.symfony-project.com
+  - pear install --alldeps phpunit/PHPUnit
+  - pear install --alldeps phpunit/PHPUnit_Selenium
+  - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE tahfizh;'; fi"
+  - echo "<?php
+    return array(
+        'connectionString' => 'mysql:host=localhost;dbname=tahfizh',
+        'emulatePrepare' => true,
+        'username' => 'travis',
+        'password' => '',
+        'charset' => 'utf8',
+    );" > protected/config/application/database.php
+  - /usr/bin/yes | php protected/yiic migrate
+
+script:
+  - phpunit --configuration protected/tests/phpunit.xml protected/tests/unit/
