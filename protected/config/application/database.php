@@ -6,9 +6,9 @@
  * @author Petra Barus <petra.barus@gmail.com>
  */
 return array(
-        'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+        'connectionString' => 'mysql:host=localhost;dbname=tahfizh',
         'emulatePrepare' => true,
-        'username' => 'root',
-        'password' => '',
+        'username' => 'tahfizh',
+        'password' => 'tahfizh',
         'charset' => 'utf8',
 );
