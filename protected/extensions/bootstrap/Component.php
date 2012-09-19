@@ -52,6 +52,9 @@ class Component extends \CApplicationComponent
 		$this->registerClientScript();
 	}
 
+	/**
+	 * this method register twitter bootstrap client script file.
+	 */
 	public function registerClientScript()
 	{
 		$cs = new \CClientScript;
@@ -87,11 +90,14 @@ class Component extends \CApplicationComponent
 		return $this->_assetUrl;
 	}
 
+	/**
+	 *
+	 * This method set _assetUrl var.
+	 * @param string $vendorPath twitter-bootstrap asset/vendor path
+	 */
 	public function setAssetUrl($vendorPath)
 	{
-//		$asset=new \CAssetManager;
-		$asset = \Yii::app()->assetManager;
-		$this->_assetUrl = $asset->publish($vendorPath);
+		$this->_assetUrl = \Yii::app()->assetManager->publish($vendorPath);
 	}
 }
 
