@@ -16,11 +16,13 @@ before_script:
   - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE tahfizh;'; fi"
   - echo "<?php
     return array(
+      array(
         'connectionString' => 'mysql:host=localhost;dbname=tahfizh',
         'emulatePrepare' => true,
         'username' => 'travis',
         'password' => '',
         'charset' => 'utf8',
+      )
     );" > protected/config/application/database.php
   - /usr/bin/yes | php protected/yiic migrate
 
