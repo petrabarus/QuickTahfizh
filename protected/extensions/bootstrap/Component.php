@@ -2,11 +2,6 @@
 
 namespace bootstrap;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Bootstrap base component
  *
