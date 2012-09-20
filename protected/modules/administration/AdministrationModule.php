@@ -27,11 +27,12 @@ class AdministrationModule extends CWebModule
 				'administration.models.*',
 				'administration.components.*',
 			),
-			'defaultController'=>'Dashboard',
+			'defaultController' => 'Dashboard',
 		));
 		Yii::app()->configure(array(
-			'theme'=>'administration'
+			'theme' => 'administration',
 		));
+		Yii::app()->bootstrap->init();
 	}
 
 	/**
