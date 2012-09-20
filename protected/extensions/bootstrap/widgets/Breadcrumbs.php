@@ -2,17 +2,13 @@
 
 namespace bootstrap\widgets;
 
-/*
- *  Tulis template anda di menu tools template
- *  
- */
-
 /**
  * Breadcrumbs class file.
  *
  * @author Nurcahyo al hidayah <2light.hidayah@gmail.com>
  * @copyright Copyright &copy; 2012-2012 Php Indonesia <Dashboard Jawa Barat>
  * @version $Id$
+ * @package bootstrap-2.1.1-widgets
  */
 class Breadcrumbs extends \CWidget
 {
