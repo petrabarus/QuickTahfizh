@@ -134,7 +134,7 @@ class Navbar extends \CWidget
 		if (is_null($this->brandUrl))
 			$this->brandUrl = \Yii::app()->homeUrl;
 		if($this->display===self::display_fixed_top)
-			\Yii::app()->getClientScript()->registerCss('navbar-margin','
+			\Yii::app()->getClientScript()->registerCss('navbar_fixed_top-body-padding','
 				@media (min-width: 980px){
 					body{padding-top:60px}
 				}');
