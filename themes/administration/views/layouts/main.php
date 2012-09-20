@@ -1,63 +1,59 @@
 <?php /* @var $this Controller */ ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html">
+<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="language" content="en" />
-
-		<!-- blueprint CSS framework -->
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-		<!--[if lt IE 8]>
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-		<![endif]-->
-
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	</head>
 
 	<body>
-
-		<div class="container" id="page">
-
-			<div id="header">
-				<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-			</div><!-- header -->
-
-			<div id="mainmenu">
-				<?php
-				$this->widget('zii.widgets.CMenu', array(
+		<?php
+		$this->widget('\\bootstrap\\widgets\\Navbar', array(
+			'type' => \bootstrap\widgets\Navbar::type_inverse,
+			'display' => \bootstrap\widgets\Navbar::display_fixed_top,
+			'htmlOptions' => array(
+				'class' => 'test',
+			),
+//			'brand'=>false,
+			'nav' => array(
+				array(
 					'items' => array(
-						array('label' => 'Home', 'url' => array('/admin/default/index')),
-						array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-						array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+						'|',
+						array('label' => 'Dashboard', 'url' => array('/administration/dashboard/index')),
+						array('label' => 'dropdown example', 'url' => 'javascript:void(0);', 'items' => array(
+								array('label' => 'list1', 'url' => 'javascript:void(0);'),
+								'-',
+								array('label' => 'list2', 'url' => 'javascript:void(0);'),
+								'-',
+						)),
+						'|',
 					),
-				));
+				),
+			),
+		));
 
-				?>
-			</div><!-- mainmenu -->
-			<?php if (isset($this->breadcrumbs)): ?>
-				<?php
-				$this->widget('zii.widgets.CBreadcrumbs', array(
-					'links' => $this->breadcrumbs,
-				));
+		?>
 
-				?><!-- breadcrumbs -->
-<?php endif ?>
+		<?php if (isset($this->breadcrumbs)): ?>
+			<?php
+			$this->widget('zii.widgets.CBreadcrumbs', array(
+				'links' => $this->breadcrumbs,
+			));
 
-				<?php echo $content; ?>
+			?><!-- breadcrumbs -->
+		<?php endif ?>
 
-			<div class="clear"></div>
+		<?php echo $content; ?>
 
-			<div id="footer">
-				Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-				All Rights Reserved.<br/>
-<?php echo Yii::powered(); ?>
-			</div><!-- footer -->
 
-		</div><!-- page -->
+		<div id="footer">
+			Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+			All Rights Reserved.<br/>
+			<?php echo Yii::powered(); ?>
+
+		</div><!-- footer -->
+
 
 	</body>
 </html>
