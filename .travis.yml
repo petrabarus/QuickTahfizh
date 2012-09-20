@@ -7,12 +7,6 @@ env:
   - DB=mysql
 
 before_script:
-  - pear channel-discover pear.phpunit.de
-  - pear channel-discover components.ez.no
-  - pear channel-discover pear.symfony-project.com
-  - pear channel-discover pear.symfony.com
-  - pear install --alldeps phpunit/PHPUnit
-  - pear install --alldeps phpunit/PHPUnit_Selenium
   - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE tahfizh;'; fi"
   - echo "<?php
     return array(
