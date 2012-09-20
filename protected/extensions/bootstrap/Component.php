@@ -6,6 +6,9 @@ namespace bootstrap;
  * Bootstrap base component
  *
  * @author Nurcahyo al Hidayah <2light.hidayah@gmail.com>
+ * @copyright Copyright &copy; 2012-2012 Php Indonesia <Dashboard Jawa Barat>
+ * @version $Id$
+ * @package bootstrap-2.1.1-widgets
  */
 class Component extends \CApplicationComponent
 {

@@ -7,9 +7,9 @@ namespace bootstrap\widgets;
  * To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a .container, which sets the width of your site and content.
  * 
  * @author Nurcahyo al hidayah <2light.hidayah@gmail.com>
- * @copyright Copyright &copy; 2012-2012 One Access Interactive
+ * @copyright Copyright &copy; 2012-2012 Php Indonesia <Dashboard Jawa Barat>
  * @version $Id$
- * @package bootstrap 2.1.1
+ * @package bootstrap-2.1.1-widgets
  */
 
 /**
