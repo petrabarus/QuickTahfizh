@@ -4,9 +4,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="language" content="en" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	</head>
-
 	<body>
 		<?php
 		$this->widget('\\bootstrap\\widgets\\Navbar', array(
@@ -15,7 +15,6 @@
 			'htmlOptions' => array(
 				'class' => 'test',
 			),
-//			'brand'=>false,
 			'nav' => array(
 				array(
 					'items' => array(
@@ -30,30 +29,40 @@
 						'|',
 					),
 				),
+				array(
+					'htmlOptions' => array(
+						'class' => 'pull-right',
+					),
+					'items' => array(
+						'|',
+						array('label' => Yii::app()->name, 'url' => '#', 'icon' => 'user', 'items' => array(
+								array('label' => Yii::t('app', 'Profile'), 'url' => array('/account/update')),
+								'-',
+								array('label' => Yii::t('app', 'Logout'), 'url' => array('/site/logout')),
+							)
+						)
+					)
+				)
 			),
 		));
 
 		?>
+		<div class="container">
+			<?php echo $content; ?>
+			<?php if (isset($this->breadcrumbs)): ?>
+				<?php
+				$this->widget('\\bootstrap\\widgets\\Breadcrumbs', array(
+					'links' => $this->breadcrumbs,
+				));
+				?><!-- breadcrumbs -->
+			<?php endif ?>
+			<hr/>
+			<footer>
+				Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+				All Rights Reserved.<br/>
+				<?php echo Yii::powered(); ?>
+			</footer><!-- footer -->
 
-		<?php if (isset($this->breadcrumbs)): ?>
-			<?php
-			$this->widget('zii.widgets.CBreadcrumbs', array(
-				'links' => $this->breadcrumbs,
-			));
-
-			?><!-- breadcrumbs -->
-		<?php endif ?>
-
-		<?php echo $content; ?>
-
-
-		<div id="footer">
-			Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-			All Rights Reserved.<br/>
-			<?php echo Yii::powered(); ?>
-
-		</div><!-- footer -->
-
-
+		</div>
 	</body>
 </html>
