@@ -31,8 +31,14 @@ class AdministrationModule extends CWebModule
 		));
 		Yii::app()->configure(array(
 			'theme' => 'administration',
+			'components' => array(
+				'bootstrap' => array(
+					'class' => '\\bootstrap\\Component',
+					'useLess' => false, //on theming development mode useLess set true
+					'responsive' => true,
+				),
+			),
 		));
-		Yii::app()->bootstrap->init();
 	}
 
 	/**
