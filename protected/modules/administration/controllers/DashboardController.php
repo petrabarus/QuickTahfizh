@@ -13,14 +13,14 @@
 class DashboardController extends \CAdministrationController
 {
 
-    /**
-     * Landing page display action.
-     * 
-     * This page will display list of actions that can be done in the
-     * administration panel.
-     */
-    public function actionIndex()
-    {
-        $this->render('index');
-    }
+	/**
+	 * Landing page display action.
+	 * 
+	 * This page will display list of actions that can be done in the
+	 * administration panel.
+	 */
+	public function actionIndex()
+	{
+		$this->render('index');
+	}
 }
