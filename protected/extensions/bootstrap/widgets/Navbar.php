@@ -98,6 +98,12 @@ class Navbar extends \CWidget
 	public $innerHtmlOptions = array();
 
 	/**
+	 * collapse div Navbar Html Options
+	 * @var array
+	 */
+	public $collapseNavHtmlOptions = array();
+
+	/**
 	 * Type
 	 * @var string type of navbar. use const with prefix type_
 	 */
@@ -116,10 +122,18 @@ class Navbar extends \CWidget
 	public $nav = array();
 
 	/**
+	 * additional container
+	 * @var mixed additional container navigation items content.
+	 */
+	public $additionalContainer = array();
+
+	/**
 	 * Collapse?
 	 * @var boolean if true this widget will generate collapsible bootstrap navbar. 
 	 */
 	public $collapse = true;
+	public $collapseDataTarget = '.nav-collapse';
+	public $useJs = true;
 
 	/**
 	 * init bootstrap navbar.
@@ -133,8 +147,8 @@ class Navbar extends \CWidget
 			$this->brand = \Yii::app()->name;
 		if (is_null($this->brandUrl))
 			$this->brandUrl = \Yii::app()->homeUrl;
-		if($this->display===self::display_fixed_top)
-			\Yii::app()->getClientScript()->registerCss('navbar_fixed_top-body-padding','
+		if ($this->display === self::display_fixed_top)
+			\Yii::app()->getClientScript()->registerCss('navbar_fixed_top-body-padding', '
 				@media (min-width: 980px){
 					body{padding-top:60px}
 				}');
@@ -155,10 +169,8 @@ class Navbar extends \CWidget
 			$this->brandHtmlOptions["class"].=" brand";
 		else
 			$this->brandHtmlOptions["class"] = "brand";
-		if (isset($this->innerHtmlOptions["class"]))
-			$this->innerHtmlOptions["class"].=" navbar-inner";
-		else
-			$this->innerHtmlOptions["class"] = "navbar-inner";
+		$this->innerHtmlOptions["class"] = (isset($this->innerHtmlOptions["class"])) ? $this->innerHtmlOptions["class"] . " navbar-inner" : "navbar-inner";
+		$this->collapseNavHtmlOptions['class'] = (isset($this->collapseNavHtmlOptions['class'])) ? $this->collapseNavHtmlOptions['class'] . ' nav-collapse' : 'nav-collapse';
 	}
 
 	/**
@@ -171,41 +183,58 @@ class Navbar extends \CWidget
 		echo ($this->display === self::display_default) ? '<div class="container">' : '<div class="container-fluid">';
 		if ($this->collapse)
 		{
-			\Yii::app()->clientScript->registerScriptFile(\Yii::app()->bootstrap->getAssetUrl() . "/js/bootstrap-collapse.js");
+			if ($this->useJs)
+				\Yii::app()->clientScript->registerScriptFile(\Yii::app()->bootstrap->getAssetUrl() . "/js/bootstrap-collapse.js");
 			\Yii::app()->bootstrap->responsive = true;
-			\Yii::app()->bootstrap->registerClientScript();
-			echo '<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			\Yii::app()->bootstrap->init();
+			echo sprintf('<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="%s">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>';
+          </button>', $this->collapseDataTarget);
 		}
 		$nav = '';
 		if ($this->nav != array())
 		{
-			foreach ($this->nav as $menu)
-			{
-				if (is_array($menu))
-				{
-					$menu['type'] = '';
-					$nav .= $this->widget(isset($menu['class']) ? $menu['class'] : '\\bootstrap\\widgets\\Nav', $menu, true);
-				}
-				else
-					$nav.=$menu;
-			}
+			$nav = $this->printoutItems($this->nav);
 		}
+		$additionalcontainer = '';
+
+		if ($this->additionalContainer != array())
+		{
+			$additionalcontainer = $this->printoutItems($this->additionalContainer);
+		}
+
 		if ($this->brand !== false)
 		{
 			echo \CHtml::link($this->brand, $this->brandUrl, $this->brandHtmlOptions);
-			echo $this->collapse ? \CHtml::tag('div', array('class' => 'nav-collapse'), $nav, true) : $nav;
+			echo $additionalcontainer;
+			echo $this->collapse ? \CHtml::tag('div', $this->collapseNavHtmlOptions, $nav, true) : $nav;
 		}
 		else
 		{
-			echo $this->collapse ? \CHtml::tag('div', array('class' => 'nav-collapse'), $nav, true) : $nav;
+			echo $additionalcontainer;
+			echo $this->collapse ? \CHtml::tag('div', $this->collapseNavHtmlOptions, $nav, true) : $nav;
 		}
 		echo '</div>';
 		echo \CHtml::closeTag('div');
 		echo \CHtml::closeTag('div');
+	}
+
+	public function printoutItems($menus)
+	{
+		$nav = '';
+		foreach ($menus as $menu)
+		{
+			if (is_array($menu))
+			{
+				$menu['type'] = '';
+				$nav .= $this->widget(isset($menu['class']) ? $menu['class'] : '\\bootstrap\\widgets\\Nav', $menu, true);
+			}
+			else
+				$nav.=$menu;
+		}
+		return $nav;
 	}
 }
 

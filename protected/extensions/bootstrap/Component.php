@@ -43,11 +43,20 @@ class Component extends \CApplicationComponent
 	public $clientScriptPosition = \CClientScript::POS_END;
 
 	/**
+	 * Auto register script
+	 * @var boolean call {@link \bootstrap\Component::registerClientScript} on init if set true
+	 * @see \bootstrap\Component::registerClientScript
+	 */
+	public $autoRegisterScript = true;
+
+	/**
 	 * init bootstrap component
 	 */
 	public function init()
 	{
-		$this->registerClientScript();
+
+		if ($this->autoRegisterScript)
+			$this->registerClientScript();
 	}
 
 	/**
