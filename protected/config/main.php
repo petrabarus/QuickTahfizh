@@ -35,6 +35,10 @@ return array(
 			'class' => '\\bootstrap\\Component',
 			'useLess' => true, //on theming development mode useLess set true
 		),
+		'request'=>array(
+			'enableCsrfValidation'=>true,
+			'csrfTokenName'=>'iCsrfToken',
+		),
 		'user' => array(
 			// enable cookie-based authentication
 			'allowAutoLogin' => true,
