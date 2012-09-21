@@ -10,17 +10,17 @@
 class AdministrationModule extends CWebModule
 {
 
-	/**
-	 * Initializes the modules.
-	 * 
-	 * This method registers required models and components.
-	 * This method set theme and defaultController.
-	 * This method is called when the module is being created
-	 * you may place code here to customize the module or the application
-	 * import the module-level models and components
-	 */
-	public function init()
-	{
+    /**
+     * Initializes the modules.
+     * 
+     * This method registers required models and components.
+     * This method set theme and defaultController.
+     * This method is called when the module is being created
+     * you may place code here to customize the module or the application
+     * import the module-level models and components
+     */
+    public function init()
+    {
 
 		$this->configure(array(
 			'import' => array(
