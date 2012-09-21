@@ -168,7 +168,7 @@ class Navbar extends \CWidget
 	{
 		echo \CHtml::openTag('div', $this->htmlOptions);
 		echo \CHtml::openTag('div', $this->innerHtmlOptions);
-		echo ($this->display === self::display_default) ? '<div class="container">' : '<div class="container" style="width: auto; padding: 0 20px">';
+		echo ($this->display === self::display_default) ? '<div class="container">' : '<div class="container-fluid">';
 		if ($this->collapse)
 		{
 			\Yii::app()->clientScript->registerScriptFile(\Yii::app()->bootstrap->getAssetUrl() . "/js/bootstrap-collapse.js");
@@ -197,11 +197,11 @@ class Navbar extends \CWidget
 		if ($this->brand !== false)
 		{
 			echo \CHtml::link($this->brand, $this->brandUrl, $this->brandHtmlOptions);
-			echo $this->collapse ? \CHtml::tag('div', array('class' => 'nav-collapse collapse'), $nav, true) : $nav;
+			echo $this->collapse ? \CHtml::tag('div', array('class' => 'nav-collapse'), $nav, true) : $nav;
 		}
 		else
 		{
-			echo $this->collapse ? \CHtml::tag('div', array('class' => 'nav-collapse collapse'), $nav, true) : $nav;
+			echo $this->collapse ? \CHtml::tag('div', array('class' => 'nav-collapse'), $nav, true) : $nav;
 		}
 		echo '</div>';
 		echo \CHtml::closeTag('div');

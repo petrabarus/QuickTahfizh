@@ -104,7 +104,7 @@ class Nav extends \CMenu
 			if ($this->encodeLabel)
 				$items[$i]['label'] = \CHtml::encode($item['label']);
 			if (isset($item['icon']))
-				$items[$i]['label'] = \CHtml::tag('b', array('class' => "icon-" . $item['icon']), '', true) . "\n" . \CHtml::tag('span', array(), $items[$i]['label']);
+				$items[$i]['label'] = \CHtml::tag('i', array('class' => "icon-" . $item['icon']), '', true) . "\n" . \CHtml::tag('span', array(), $items[$i]['label']);
 			$hasActiveChild = false;
 			if (isset($item['items']))
 			{
@@ -153,7 +153,6 @@ class Nav extends \CMenu
 			return $item['label'];
 		else
 		{
-			$item['linkOptions']['class'] = 'nav-header';
 			return \CHtml::tag('span', isset($item['linkOptions']) ? $item['linkOptions'] : array(), $item['label']);
 		}
 	}
