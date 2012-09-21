@@ -30,9 +30,10 @@ return array(
 		),
 	),
 	// application components
-	'components' => array(
+	'components' => \CMap::mergeArray(require(APP_CONFIG_DIR . '/database.php'), array(
 		'bootstrap' => array(
-			'class' => '\\bootstrap\\Component'
+			'class' => '\\bootstrap\\Component',
+			'useLess' => true, //on theming development mode useLess set true
 		),
 		'user' => array(
 			// enable cookie-based authentication
@@ -48,7 +49,6 @@ return array(
 			),
 		),
 		// uncomment the following to use a MySQL database
-		'db' => require(APP_CONFIG_DIR . '/database.php'),
 		'errorHandler' => array(
 			// use 'site/error' action to display errors
 			'errorAction' => 'site/error',
@@ -60,15 +60,19 @@ return array(
 					'class' => 'CFileLogRoute',
 					'levels' => 'error, warning',
 				),
-			// uncomment the following to show log messages on web pages
-			/*
-			  array(
-			  'class'=>'CWebLogRoute',
-			  ),
-			 */
+				// uncomment the following to show log messages on web pages
+				/*
+				  array(
+				  'class'=>'CWebLogRoute',
+				  ),
+				 */
+				array(
+					'class' => 'CProfileLogRoute',
+					'enabled' => YII_DEBUG
+				),
 			),
 		),
-	),
+	)),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params' => array(

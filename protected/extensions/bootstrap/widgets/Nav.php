@@ -1,14 +1,13 @@
 <?php
 
-//
-
 namespace bootstrap\widgets;
 
 /**
  * All nav components here—tabs, pills, and lists—share the same base markup and styles through the .nav class.
  * @author Nurcahyo al hidayah <2light.hidayah@gmail.com>
+ * @copyright Copyright &copy; 2012-2012 Php Indonesia <Dashboard Jawa Barat>
  * @version $Id$
- * @package bootstrap 2.1.1
+ * @package bootstrap-2.1.1-widgets
  */
 //import zii CMenu widget.
 \Yii::import('zii.widgets.CMenu');
@@ -105,7 +104,7 @@ class Nav extends \CMenu
 			if ($this->encodeLabel)
 				$items[$i]['label'] = \CHtml::encode($item['label']);
 			if (isset($item['icon']))
-				$items[$i]['label'] = \CHtml::tag('b', array('class' => "icon-" . $item['icon']), '', true) ."\n".\CHtml::tag('span',array(),$items[$i]['label']);
+				$items[$i]['label'] = \CHtml::tag('b', array('class' => "icon-" . $item['icon']), '', true) . "\n" . \CHtml::tag('span', array(), $items[$i]['label']);
 			$hasActiveChild = false;
 			if (isset($item['items']))
 			{
@@ -162,7 +161,7 @@ class Nav extends \CMenu
 	/**
 	 * Append All Html Options.
 	 * assign htmlOptions,  submenuHtmlOptions to default bootstrap Nav Css HtmlOptions. 
-	 */ 
+	 */
 	protected function appendAllHtmlOptions()
 	{
 		if (isset($this->htmlOptions["class"]))
