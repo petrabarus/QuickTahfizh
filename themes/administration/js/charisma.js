@@ -1,8 +1,10 @@
 $(document).ready(function(){
+		if(window.baseUrl===undefined)
+			window.baseUrl='';
     //themes, change CSS with JS
     //default theme(CSS) is cerulean, change it if needed
     var current_theme = $.cookie('current_theme')==null ? 'cerulean' :$.cookie('current_theme');
-    switch_theme(current_theme);
+    switch_theme(current_theme,window.baseUrl);
 	
     $('#themes a[data-value="'+current_theme+'"]').find('i').addClass('icon-ok');
 				 
@@ -12,16 +14,18 @@ $(document).ready(function(){
         $.cookie('current_theme',current_theme,{
             expires:365
         });
-        switch_theme(current_theme);
+        switch_theme(current_theme,window.baseUrl);
         $('#themes i').removeClass('icon-ok');
         $(this).find('i').addClass('icon-ok');
     });
 	
 	
-    function switch_theme(theme_name)
+    function switch_theme(theme_name,baseUrl)
     {
+			if(baseUrl===undefined)
+				baseUrl='';
         //TODO: Change this
-        $('#bs-css').attr('href','/themes/administration/css/bootstrap-'+theme_name+'.css');
+        $('#bs-css').attr('href',baseUrl+'/themes/administration/css/bootstrap-'+theme_name+'.css');
     }
 	
     //ajax menu checkbox
