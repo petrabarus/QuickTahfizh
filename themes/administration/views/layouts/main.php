@@ -28,6 +28,15 @@ define('ADMIN_THEME_IMAGES', ADMIN_THEME . '/img');
 		<meta name="author" content="">
 		<!-- The styles -->
 		<link id="bs-css" href="<?php echo ADMIN_THEME_CSS; ?>/bootstrap-cerulean.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+		</style>
+		<link href="<?php echo ADMIN_THEME_CSS; ?>/bootstrap-responsive.css" rel="stylesheet">
 		<link href="<?php echo ADMIN_THEME_CSS; ?>/charisma-app.css" rel="stylesheet">
 		<link href="<?php echo ADMIN_THEME_CSS; ?>/jquery-ui-1.8.21.custom.css" rel="stylesheet">
 		<link href='<?php echo ADMIN_THEME_CSS; ?>/fullcalendar.css' rel='stylesheet'>
@@ -58,17 +67,9 @@ define('ADMIN_THEME_IMAGES', ADMIN_THEME . '/img');
 		<?php
 		//navigation bar
 		$this->widget('\\bootstrap\\widgets\\Navbar', array(
-			'display' => \bootstrap\widgets\Navbar::display_fixed_top,
 			'collapse' => true,
-			'nav' => array(
-				array(
-					'items' => array(
-						array('label' => Yii::t('app', 'Visit site'), 'url' => array('/site/index')),
-					)
-				),
-				'<form class="navbar-search">
-             <input placeholder="Search" class="search-query span2" name="query" type="text">
-         </form>',
+			'collapseDataTarget' => '.nav-collapse,.sidebar-nav.nav-collapse',
+			'additionalContainer' => array(
 				array(
 					'htmlOptions' => array(
 						'class' => 'pull-right',
@@ -148,7 +149,16 @@ define('ADMIN_THEME_IMAGES', ADMIN_THEME . '/img');
 							),
 						),
 					),
+			)),
+			'nav' => array(
+				array(
+					'items' => array(
+						array('label' => Yii::t('app', 'Visit site'), 'url' => array('/site/index')),
+					)
 				),
+				'<form class="navbar-search">
+             <input placeholder="Search" class="search-query span2" name="query" type="text">
+         </form>',
 			)
 		));
 		//end of navigation bar
@@ -191,8 +201,6 @@ define('ADMIN_THEME_IMAGES', ADMIN_THEME . '/img');
 		<script src="<?php echo ADMIN_THEME_JS; ?>/bootstrap-popover.js"></script>
 		<!-- button enhancer library -->
 		<script src="<?php echo ADMIN_THEME_JS; ?>/bootstrap-button.js"></script>
-		<!-- accordion library (optional, not used in demo) -->
-		<script src="<?php echo ADMIN_THEME_JS; ?>/bootstrap-collapse.js"></script>
 		<!-- carousel slideshow library (optional, not used in demo) -->
 		<script src="<?php echo ADMIN_THEME_JS; ?>/bootstrap-carousel.js"></script>
 		<!-- autocomplete library -->
@@ -241,17 +249,6 @@ define('ADMIN_THEME_IMAGES', ADMIN_THEME . '/img');
 	</body>
 </html>
 <?php
-\Yii::app()->getClientScript()->registerScript('baseUrl', 'window.baseUrl="' . Yii::app()->baseUrl . '"', \CClientScript::POS_HEAD)
-		->registerCss('navbar_fixed_top-body-padding', '
-				@media (min-width: 980px){
-					body{padding-top:80px}
-				}
-				body {
-					padding-bottom: 40px;
-				}
-				.sidebar-nav {
-					padding: 9px 0;
-				}'
-);
+\Yii::app()->getClientScript()->registerScript('baseUrl', 'window.baseUrl="' . Yii::app()->baseUrl . '"', \CClientScript::POS_HEAD);
 
 ?>

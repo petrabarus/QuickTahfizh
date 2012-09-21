@@ -36,6 +36,7 @@ class AdministrationModule extends CWebModule
 					'class' => '\\bootstrap\\Component',
 					'useLess' => false, //on theming development mode useLess set true
 					'responsive' => true,
+					'autoRegisterScript'=>false,
 				),
 			),
 		));

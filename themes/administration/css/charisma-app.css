@@ -454,12 +454,7 @@ background: #DEDEDE;
 padding-top:30px;
 height:120px;
 }
-.pull-left{
-float:left !important;
-}
-.pull-right{
-float:right !important;
-}
+
 .remember{
 margin-top:3px;
 }
