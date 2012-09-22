@@ -52,6 +52,7 @@ define('ADMIN_THEME_IMAGES', ADMIN_THEME . '/img');
 		<link href='<?php echo ADMIN_THEME_CSS; ?>/jquery.iphone.toggle.css' rel='stylesheet'>
 		<link href='<?php echo ADMIN_THEME_CSS; ?>/opa-icons.css' rel='stylesheet'>
 		<link href='<?php echo ADMIN_THEME_CSS; ?>/uploadify.css' rel='stylesheet'>
+		<script src="<?php echo ADMIN_THEME_JS; ?>/modernizr.custom.js"></script>
 
 		<!--         The HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>

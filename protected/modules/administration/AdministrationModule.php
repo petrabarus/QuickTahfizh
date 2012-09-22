@@ -31,6 +31,7 @@ class AdministrationModule extends CWebModule
 		));
 		Yii::app()->configure(array(
 			'theme' => 'administration',
+			'homeUrl'=>array('/administration/dashboard/index'),
 			'components' => array(
 				'bootstrap' => array(
 					'class' => '\\bootstrap\\Component',
