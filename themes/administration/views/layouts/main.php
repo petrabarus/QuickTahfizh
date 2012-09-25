@@ -213,7 +213,7 @@ define('ADMIN_THEME_IMAGES', ADMIN_THEME . '/img');
 		<!-- calander plugin -->
 		<script src="<?php echo ADMIN_THEME_JS; ?>/fullcalendar.min.js"></script>
 		<!-- data table plugin -->
-		<script src="<?php echo ADMIN_THEME_JS; ?>/jquery.dataTables.min.js"></script>
+		<!-- <script src="<?php echo ADMIN_THEME_JS; ?>/jquery.dataTables.min.js"></script> -->
 
 		<!-- chart libraries start -->
 		<script src="<?php echo ADMIN_THEME_JS; ?>/excanvas.js"></script>
