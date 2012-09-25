@@ -8,8 +8,16 @@
  * @author Petra Barus <petra.barus@gmail.com>
  * @package application.tests.unit.models
  */
+use application\models\User;
+
 class UserTest extends \CDbTestCase
 {
+    /**
+     * @var array fixtures
+     */
+    public $fixtures = array(
+        'users' => 'application\models\User',
+    );
 
     /**
      * Username regex normal test.
@@ -23,8 +31,8 @@ class UserTest extends \CDbTestCase
         $user = new User();
         //False testcases
         $failedUsernameTestcases = array(
-          'username',
-          'thisismyusername',
+            'username',
+            'thisismyusername',
         );
         foreach ($failedUsernameTestcases as $testcase)
         {
@@ -48,10 +56,10 @@ class UserTest extends \CDbTestCase
         $user = new User();
         //False testcases
         $failedUsernameTestcases = array(
-          'user', //length less than 5
-          'username.', //using dot
-          '1username', //using number in first character
-          'usern$',
+            'user', //length less than 5
+            'username.', //using dot
+            '1username', //using number in first character
+            'usern$',
         );
         foreach ($failedUsernameTestcases as $testcase)
         {

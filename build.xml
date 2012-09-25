@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="UrbanIndo" default="build" basedir=".">
+    <property name="protected.dir" location="${basedir}/protected"/>
+    <target name="build">
+        
+    </target>
+    <target name="test">
+        <exec executable="/usr/bin/phpunit">
+            <arg line="--configuration ${protected.dir}/tests/phpunit.xml"/>
+            <arg line="${protected.dir}/tests/unit/"/>
+        </exec>
+    </target>
+</project>
