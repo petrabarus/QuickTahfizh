@@ -6,6 +6,8 @@
  * @author Petra Barus <petra.barus@gmail.com>
  * @package application.tests.functional.administration
  */
+use application\models\User;
+
 class UsersTest extends WebTestCase
 {
 
@@ -15,5 +17,14 @@ class UsersTest extends WebTestCase
     public function testIndex()
     {
         $this->open('/administration/users');
+
+        $users = User::model()->findAll();
+        foreach ($users as $user)
+        {
+            /* @var $user application\models\User */
+            $this->assertTextPresent($user->id);
+            $this->assertTextPresent($user->username);
+            $this->assertTextPresent($user->fullName);
+        }
     }
 }
