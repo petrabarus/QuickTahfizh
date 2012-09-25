@@ -18,8 +18,18 @@
  * @author Petra Barus <petra.barus@gmail.com>
  * @package application.models
  */
+
+namespace application\models;
+
+use \Yii;
+
 class User extends \CActiveRecord
 {
+    /**
+     * List of constants for scopes.
+     */
+    const SCOPE_SELECT_LABELS = 'selectLabels';
+    const SCOPE_ORDER_NEWEST = 'orderNewest';
 
     /**
      * Returns the static model of the specified AR class.
@@ -58,6 +68,24 @@ class User extends \CActiveRecord
     public function relations()
     {
         return array(
+        );
+    }
+
+    /**
+     * @return array the scope definition. {@link CActiveRecord}.
+     */
+    public function scopes()
+    {
+        $t = $this->getTableAlias();
+        return array(
+            self::SCOPE_SELECT_LABELS => array(
+                'select' => array(
+                    "`{$t}`.`id`", "`{$t}`.`username`", "`{$t}`.`fullName`",
+                ),
+            ),
+            self::SCOPE_ORDER_NEWEST => array(
+                'order' => "`{$t}`.`createdTime` DESC",
+            )
         );
     }
 
