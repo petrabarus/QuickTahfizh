@@ -101,4 +101,8 @@ class User extends \CActiveRecord
             'email' => Yii::t('label', 'Email'),
         );
     }
+		
+		public function search(){
+			return new CActiveDataProvider('User');
+		}
 }

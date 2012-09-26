@@ -26,4 +26,3 @@ before_script:
 
 script:
   - phpunit --configuration protected/tests/phpunit.xml protected/tests/unit/
-
